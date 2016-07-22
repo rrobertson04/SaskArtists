@@ -258,7 +258,7 @@ if(e.which == 74 && isCtrl == true) {
     <script src="search.js"></script>
 </head>
 <body>
-<div id="container">
+<div class="container">
 	<font color="#800080"><h2><a href="index.php">Saskatchewan Artists</a></h2> </font>
 	<p>Artists presented here were born, raised, or live in Saskatchewan, Canada. </p>
 
@@ -279,7 +279,7 @@ if(e.which == 74 && isCtrl == true) {
                 }
                 echo "<img src='".$row["work_url"]."'>";
                 echo "<div class='carousel-caption'>";
-                echo "<h3><a style='color:white;' href='".$row["short"]."'>".$row["first"]." ".$row["last"]."</a></h3>";
+                echo "<h3><a style='color:white;' href='".$row["short"]."'>".$row["name"]."</a></h3>";
                 echo "<p>".$row["title"]."</p>";
                 echo "</div>";
                 echo "</div>";
@@ -314,6 +314,9 @@ if(e.which == 74 && isCtrl == true) {
 					echo "<div id=\"$letter\" class=\"tab-pane fade\">";
 						echo "<h3>$letter Section</h3>";
 					echo "<ul>";
+					if($q->num_rows === 0){
+						echo 'No Artists to Display';
+					}
 					while ($row = $q->fetch_assoc()){
 								echo "<li><a href=".$row['short'].">".$row['name']."</a> ".$row['description']."</li>";
 					}
